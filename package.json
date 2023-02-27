@@ -1,0 +1,22 @@
+{
+  "name": "picture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.html",
+  "scripts": {
+    "preview": "vite preview",
+    "build": "tsc && vite build",
+    "dev": "vite serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    "> 1%",
+    "not dead"
+  ],
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1"
+  },
+  "dependencies": {}
+}
