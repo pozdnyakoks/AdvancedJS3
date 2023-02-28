@@ -3,14 +3,13 @@ export class Slider {
   slides: HTMLCollection;
   btns: NodeListOf<HTMLAnchorElement>;
   slideIndex: number;
-  hanson: HTMLDivElement;
+  hanson?: HTMLDivElement;
 
   constructor(page: string, btns: string) {
     this.page = document.querySelector(page)!;
     this.slides = this.page.children;
     this.btns = document.querySelectorAll(btns);
     this.slideIndex = 1;
-    this.hanson = document.querySelector('.hanson')!;
   }
 
   showSlides(n: number) {
@@ -22,15 +21,17 @@ export class Slider {
       this.slideIndex = this.showSlides.length;
     }
 
-    if (n === 3) {
-      this.hanson.style.opacity = '0';
-      this.hanson.classList.add('animated');
-      setTimeout(() => {
-        this.hanson.style.opacity = '1';
-        this.hanson.classList.add('slideInUp');
-      }, 3000);
-    } else {
-      this.hanson.classList.remove('slideInUp');
+    if (this.hanson !== undefined) {
+      if (n === 3) {
+        this.hanson.style.opacity = '0';
+        this.hanson.classList.add('animated');
+        setTimeout(() => {
+          (<HTMLDivElement>this.hanson).style.opacity = '1';
+          (<HTMLDivElement>this.hanson).classList.add('slideInUp');
+        }, 3000);
+      } else {
+        this.hanson.classList.remove('slideInUp');
+      }
     }
 
     for (let i = 0; i < this.slides.length; i++) {
@@ -45,6 +46,9 @@ export class Slider {
   }
 
   render() {
+    if (document.querySelector('.hanson')) {
+      this.hanson = document.querySelector('.hanson')!;
+    }
     this.btns.forEach((btn) => {
       btn.addEventListener('click', () => {
         this.plusSlides(1);
