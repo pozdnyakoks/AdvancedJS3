@@ -19,7 +19,6 @@ export class Slider {
     if (n < 1) {
       this.slideIndex = this.showSlides.length;
     }
-
     for (let i = 0; i < this.slides.length; i++) {
       (<HTMLDivElement>this.slides[i]).style.display = 'none';
     }
@@ -35,6 +34,14 @@ export class Slider {
     this.btns.forEach((btn) => {
       btn.addEventListener('click', () => {
         this.plusSlides(1);
+      });
+
+      (<HTMLAnchorElement>(
+        (<HTMLDivElement>btn.parentNode).previousElementSibling
+      )).addEventListener('click', (ev) => {
+        ev.preventDefault();
+        this.slideIndex = 1;
+        this.showSlides(this.slideIndex);
       });
     });
 
