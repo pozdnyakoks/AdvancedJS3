@@ -3,12 +3,14 @@ export class Slider {
   slides: HTMLCollection;
   btns: NodeListOf<HTMLAnchorElement>;
   slideIndex: number;
+  hanson: HTMLDivElement;
 
   constructor(page: string, btns: string) {
     this.page = document.querySelector(page)!;
     this.slides = this.page.children;
     this.btns = document.querySelectorAll(btns);
     this.slideIndex = 1;
+    this.hanson = document.querySelector('.hanson')!;
   }
 
   showSlides(n: number) {
@@ -19,6 +21,18 @@ export class Slider {
     if (n < 1) {
       this.slideIndex = this.showSlides.length;
     }
+
+    if (n === 3) {
+      this.hanson.style.opacity = '0';
+      this.hanson.classList.add('animated');
+      setTimeout(() => {
+        this.hanson.style.opacity = '1';
+        this.hanson.classList.add('slideInUp');
+      }, 3000);
+    } else {
+      this.hanson.classList.remove('slideInUp');
+    }
+
     for (let i = 0; i < this.slides.length; i++) {
       (<HTMLDivElement>this.slides[i]).style.display = 'none';
     }
