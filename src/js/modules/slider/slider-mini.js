@@ -7,7 +7,6 @@ export class MiniSlider extends Slider {
 
   decorizeSlides() {
     Array.from(this.slides).forEach(slide => {
-      console.log(slide)
       if (this.activeClass !== '') {
         slide.classList.remove(this.activeClass);
         if (this.animate) {
@@ -18,10 +17,8 @@ export class MiniSlider extends Slider {
     })
 
 
-    if (!this.slides[0].closest('button')) {
-      if (this.activeClass !== '') {
-        this.slides[0].classList.add(this.activeClass);
-      }
+    if (!this.slides[0].closest('button') && this.activeClass !== '') {
+      this.slides[0].classList.add(this.activeClass);
     }
     if (this.animate) {
       this.slides[0].querySelector('.card__title').style.opacity = '1';
