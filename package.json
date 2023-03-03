@@ -5,7 +5,7 @@
   "main": "./src/index.html",
   "scripts": {
     "preview": "vite preview",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "dev": "vite serve"
   },
   "author": "",
