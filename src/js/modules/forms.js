@@ -20,7 +20,8 @@ export class Form {
     const mailInputs = document.querySelectorAll('[type="email"]');
     mailInputs.forEach(input => {
       input.addEventListener('keypress', (e) => {
-        if (e.key.match(/[^a-z 0-9 @ \.]/gi)) {
+        const emailMask = /[^a-z 0-9 @ \.]/gi;
+        if (e.key.match(emailMask)) {
           e.preventDefault();
         }
       });
