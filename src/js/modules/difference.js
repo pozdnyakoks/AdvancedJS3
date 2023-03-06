@@ -24,7 +24,6 @@ export class Difference {
 
       }
     })
-
   }
 
   hideItems(items) {
