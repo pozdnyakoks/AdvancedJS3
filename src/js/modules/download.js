@@ -8,6 +8,7 @@ export class Download {
     const element = document.createElement('a');
     element.setAttribute('href', path);
     element.setAttribute('download', 'nice_picture');
+    element.setAttribute('target', '_blank');
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
@@ -18,7 +19,8 @@ export class Download {
 
   init() {
     this.btns.forEach(item => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (ev) => {
+        // ev.preventDefault()
         this.downloadItem(this.path)
       })
     })

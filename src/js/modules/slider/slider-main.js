@@ -52,13 +52,14 @@ export class MainSlider extends Slider {
       btn.addEventListener('click', () => {
         this.plusSlides(1);
       });
+      if (btn.parentNode.previousElementSibling.getAttribute('href') === '#') {
 
-      btn.parentNode.previousElementSibling
-        .addEventListener('click', (ev) => {
+        btn.parentNode.previousElementSibling.addEventListener('click', (ev) => {
           ev.preventDefault();
           this.slideIndex = 1;
           this.showSlides(this.slideIndex);
         });
+      }
     });
 
     this.btnsTriggers('.prevmodule', -1)
